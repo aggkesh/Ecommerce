@@ -1,0 +1,8 @@
+package com.ecommerce.aggregatorservice.service;
+
+import com.ecommerce.aggregatorservice.models.OrderDetail;
+
+public interface OrderDetailService {
+
+	public OrderDetail getOrderDetail(String userId);
+}

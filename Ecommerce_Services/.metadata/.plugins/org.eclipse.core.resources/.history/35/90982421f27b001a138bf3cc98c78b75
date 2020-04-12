@@ -1,0 +1,36 @@
+package com.ecommerce.userservice.service;
+
+import java.util.List;
+
+import com.ecommerce.userservice.models.User;
+
+/**
+ * User Detail Service to perform queries on User DB
+ * 
+ * @author keshavaggarwal
+ *
+ */
+public interface UserDetailService {
+
+	/**
+	 * Get all users present.
+	 * 
+	 * @return list of User
+	 */
+	public List<User> getUsers();
+	
+	/**
+	 * Get User for given userId
+	 * 
+	 * @param userId id of the user to find in User db
+	 * @return User corresponding for given userId
+	 * @throws RuntimeException if no user is present in db for given userId
+	 */
+	public User getUserById(String userId) throws RuntimeException;
+
+    public void addUser(User whiskey);
+
+    public void updateUser(String id, User whiskey);
+
+    public void deleteUser(String id);
+}

@@ -1,0 +1,17 @@
+package com.ecommerce.userservice.service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import com.ecommerce.userservice.exception.UserNotFoundException;
+import com.ecommerce.userservice.models.User;
+import com.ecommerce.userservice.service.impl.UserDetailServiceImpl;
+
+public interface UserDetailService {
+
+	public List<User> getUsers();
+	
+	public User getUserById(String userId);
+
+}

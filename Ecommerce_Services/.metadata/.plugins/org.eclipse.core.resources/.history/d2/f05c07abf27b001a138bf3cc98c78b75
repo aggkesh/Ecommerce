@@ -1,0 +1,67 @@
+package com.ecommerce.userservice.service.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.ecommerce.userservice.exception.UserNotFoundException;
+import com.ecommerce.userservice.models.User;
+import com.ecommerce.userservice.repository.UserRepository;
+import com.ecommerce.userservice.service.UserDetailService;
+
+@Service
+@Transactional
+public class UserDetailServiceImpl implements UserDetailService {
+		
+	@Autowired
+	private UserRepository userRepository;
+	
+	@Override
+	public List<User> getUsers() {
+		List<User> users = new ArrayList<>();
+		userRepository.findAll().forEach(users::add);
+		return users;
+	}
+
+	@Override
+	public User getUserById(String userId) throws RuntimeException {
+		Optional<User> user = userRepository.findById(userId);
+
+		if(user.isPresent()) {
+			return user.get();
+		}
+		
+		throw new UserNotFoundException(userId);
+	}
+
+    public void addUser(User user) {
+    	userRepository.save(user);
+    }
+
+    public void updateUser(String id, User user) {
+    	userRepository.save(user);
+    }
+
+    public void deleteUser(String userId) {
+    	userRepository.deleteById(userId);
+    }
+    
+//	private List<User> generateUsers() {
+//		List<User> users = new ArrayList<>();
+//		users.add(new User("1","John","23","john.doe@nagarro.com"));
+//		users.add(new User("2","Mark","33","mark.mayar@yahoo.com"));
+//		users.add(new User("3","Rahul","19","rahul.kappor@hotmail.com"));
+//		users.add(new User("4","Ravi","31","ravi.dalmia@gmail.com"));
+//		users.add(new User("5","Dheeraj","40","dheeraj.bisth@google.com"));
+//		users.add(new User("6","Todd","50","todd.anderson@nagarro.com"));
+//		users.add(new User("7","Tomer","70","tomer.shemesh@hotmail.com"));
+//		users.add(new User("8","Hemender","12","hemender.jain@yahoo.com"));
+//		users.add(new User("9","Amit","29","amit.kumar@google.com"));
+//		users.add(new User("10","GagganDeep","25","gaggandeep.nagpal@gmail.com"));
+//		return users;
+//	}
+}

@@ -1,0 +1,51 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: initdb-config
+  namespace: com-ecommerce-production
+data:
+  initdb.sql: |
+      CREATE DATABASE IF NOT EXISTS ecommerce; 
+      USE ecommerce;
+      DROP TABLE IF EXISTS user_table;
+      CREATE TABLE user_table (id VARCHAR(3), name VARCHAR(256), age VARCHAR(3), email VARCHAR(256));
+      INSERT INTO user_table VALUES ('1',  'John Smith',       '32', 'John.Smith@nagarro.com');
+      INSERT INTO user_table VALUES ('2',  'Lilian Worksmith', '29', 'Lilian.Worksmith@yahoo.com');
+      INSERT INTO user_table VALUES ('3',  'Michael Rupert',   '27', 'Michael.Rupert@hotmail.com');
+      INSERT INTO user_table VALUES ('4',  'Rahul Kapoor',     '19', 'Rahul.Kapoor@nagarro.com');
+      INSERT INTO user_table VALUES ('5',  'Ravi Dalmia',      '31', 'Ravi.Dalmia@yahoo.com');
+      INSERT INTO user_table VALUES ('6',  'Dheeraj Bisth',    '40', 'Dheeraj.Bisth@hotmail.com');
+      INSERT INTO user_table VALUES ('7',  'Todd Anderson',    '50', 'Todd.Anderson@nagarro.com');
+      INSERT INTO user_table VALUES ('8',  'Tomer Shemesh',    '70', 'Tomer.Shemesh@yahoo.com');
+      INSERT INTO user_table VALUES ('9',  'Hemender Jain',    '12', 'Hemender.Jain@hotmail.com');
+      INSERT INTO user_table VALUES ('10', 'Amit Kumar',       '29', 'Amit.Kumar@gmail.com');
+      DROP TABLE IF EXISTS order_table;
+      CREATE TABLE order_table (orderid VARCHAR(3), orderamount VARCHAR(30), orderdate VARCHAR(30), userid VARCHAR(3));
+      INSERT INTO order_table VALUES ('1',   '250',   '11-Nov-2000',  '1');
+      INSERT INTO order_table VALUES ('2',   '910',   '14-Apr-2020',  '2');
+      INSERT INTO order_table VALUES ('3',   '2150',  '10-Mar-2005',  '3');     
+      INSERT INTO order_table VALUES ('4',   '50',    '1-Jan-2010',   '4');
+      INSERT INTO order_table VALUES ('5',   '250',   '11-Nov-2011',  '5');
+      INSERT INTO order_table VALUES ('6',   '5550',  '14-Apr-2020',  '6');
+      INSERT INTO order_table VALUES ('7',   '250',   '12-Oct-2012',  '7');
+      INSERT INTO order_table VALUES ('8',   '7110',  '21-May-2013',  '8');
+      INSERT INTO order_table VALUES ('9',   '1150',  '18-Jul-2018',  '9');
+      INSERT INTO order_table VALUES ('10',  '6250',  '9-Apr-2014',   '10');
+      INSERT INTO order_table VALUES ('11',  '2501',  '5-Aug-2019',   '9');
+      INSERT INTO order_table VALUES ('12',  '1910',  '14-Dec-2020',  '8');
+      INSERT INTO order_table VALUES ('13',  '8501',  '15-Oct-2000',  '7');
+      INSERT INTO order_table VALUES ('14',  '1112',  '19-Feb-2015',  '10');
+      INSERT INTO order_table VALUES ('15',  '1990',  '19-Mar-2017',  '5');
+      INSERT INTO order_table VALUES ('16',  '996',   '21-May-2011',  '4');
+      INSERT INTO order_table VALUES ('17',  '889',   '16-Apr-2019',  '3');
+      INSERT INTO order_table VALUES ('18',  '550',   '25-Jun-2017',  '2');
+      INSERT INTO order_table VALUES ('19',  '1750',  '12-Nov-2010',  '1');
+      INSERT INTO order_table VALUES ('20',  '1930',  '1-Aug-2015',   '2');
+      INSERT INTO order_table VALUES ('21',  '2299',  '4-Dec-1996',   '2');
+      INSERT INTO order_table VALUES ('22',  '2599',  '20-May-2009',  '3');
+      INSERT INTO order_table VALUES ('23',  '1693',  '9-May-2007',   '2');
+      INSERT INTO order_table VALUES ('24',  '1209',  '5-Jan-2005',   '10');
+      INSERT INTO order_table VALUES ('25',  '9191',  '25-Oct-2002',  '6');
+      INSERT INTO order_table VALUES ('26',  '9950',  '6-Oct-2004',   '1');
+      INSERT INTO order_table VALUES ('27',  '2509',  '4-Feb-2010',   '7');            
+      INSERT INTO order_table VALUES ('28',  '8250',  '1-Jul-2020',   '1');

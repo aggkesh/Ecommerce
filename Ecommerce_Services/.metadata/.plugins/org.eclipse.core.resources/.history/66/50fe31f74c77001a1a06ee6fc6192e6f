@@ -1,0 +1,34 @@
+package com.ecommerce.aggregatorservice.models;
+
+import java.util.List;
+
+import org.springframework.lang.NonNull;
+
+public class OrderDetail {
+	private Object user;
+	private List<Object> orders;
+	
+	public OrderDetail(@NonNull Object user, @NonNull List<Object> orders) {
+		this.user = user;
+		this.orders = orders;
+	}
+
+	@NonNull
+	public Object getUser() {
+		return user;
+	}
+	
+	public void setUser(Object user) {
+		this.user = user;
+	}
+	
+	public List<Object> getOrders() {
+		return orders;
+	}
+	
+	public void setOrders(List<Object> orders) {
+		this.orders = orders;
+	}
+	
+	
+}

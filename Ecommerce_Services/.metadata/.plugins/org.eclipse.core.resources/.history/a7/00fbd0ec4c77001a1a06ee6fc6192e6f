@@ -1,0 +1,6 @@
+package com.ecommerce.aggregatorservice.models;
+
+public class OrderDetail {
+	private Object user;
+	private List<Object> orders;
+}

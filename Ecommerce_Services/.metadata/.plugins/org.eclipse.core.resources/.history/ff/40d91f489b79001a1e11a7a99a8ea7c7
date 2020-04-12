@@ -1,0 +1,11 @@
+package com.ecommerce.userservice.service;
+
+import org.springframework.stereotype.Repository;
+
+import com.ecommerce.userservice.models.User;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+@Repository
+public interface UserRepository extends JpaRepository<User, Long>{
+}

@@ -1,0 +1,4 @@
+spring.application.name=users
+server.port=8080
+opentracing.jaeger.udp-sender.host=localhost
+opentracing.jaeger.udp-sender.port=6831

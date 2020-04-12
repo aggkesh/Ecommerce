@@ -1,0 +1,21 @@
+package com.ecommerce.aggregatorservice.service;
+
+import com.ecommerce.aggregatorservice.models.OrderDetail;
+
+/**
+ * Order Detail Service interact with order & user api
+ * 
+ * @author keshavaggarwal
+ *
+ */
+public interface OrderDetailService {
+
+	/**
+	 * Order Detail for given user
+	 * 
+	 * @param userId
+	 * @return
+	 * @throws RuntimeException
+	 */
+	public OrderDetail getOrderDetailForUser(String userId) throws RuntimeException;
+}

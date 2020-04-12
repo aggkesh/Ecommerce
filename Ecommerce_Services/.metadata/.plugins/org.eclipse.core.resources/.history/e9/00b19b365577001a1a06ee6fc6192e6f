@@ -1,0 +1,84 @@
+package com.ecommerce.aggregatorservice.service.impl;
+
+import java.util.Arrays;
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+import com.ecommerce.aggregatorservice.exception.OrderDetailNotFoundException;
+import com.ecommerce.aggregatorservice.models.OrderDetail;
+import com.ecommerce.aggregatorservice.service.OrderDetailService;
+
+@Service
+public class OrderDetailServiceImpl implements OrderDetailService {
+
+	@Resource(name = "restTemp")
+	private RestTemplate restTemplate;
+
+	@Value("${QUOTES_USER_URL:http://localhost:8080}")
+	private String usersUrl;
+	
+	@Value("${QUOTES_ORDER_URL:http://localhost:8081}")
+	private String ordersUrl;
+	
+	@Override
+	public OrderDetail getOrderDetailForUser(String userId) throws RuntimeException {
+
+		Object userDetail = getUserDetail(userId);
+		
+		if(userDetail == null) {
+			List<Object> orders = getOrdersForUserId(userId);
+			return new OrderDetail(userDetail, orders);
+		}
+
+		String exceptionMsg;
+		
+		if(userDetail == null && orders == null) {
+			exceptionMsg = "Error fetching user and "
+					+ "orders for given userId " + userId;
+		} else if(userDetail == null){
+			exceptionMsg = "Error fetching user for given userId " + userId;
+		} else {
+			exceptionMsg = "Error fetching orders for given userId " + userId;
+		}
+		
+		throw new OrderDetailNotFoundException(exceptionMsg);
+	}
+
+	public List<Object> getOrdersForUserId(String userId) {
+		String url = ordersUrl + "/orders/" + userId;
+
+		ResponseEntity<Object[]> ordersResponse = restTemplate.getForEntity(url, Object[].class);
+
+		if (ordersResponse != null) {
+			return Arrays.asList(ordersResponse.getBody());
+		}
+		
+		return null;
+	}
+
+	public Object getUserDetail(String userId) {
+		String url = usersUrl + "/users/" + userId;
+		ResponseEntity<Object> userResponse = restTemplate.getForEntity(url, Object.class);
+
+		if (userResponse != null) {
+			return userResponse.getBody();
+		}
+		
+		return null;
+	}
+
+	public RestTemplate getRestTemplate() {
+		return restTemplate;
+	}
+
+	public void setRestTemplate(RestTemplate restTemplate) {
+		this.restTemplate = restTemplate;
+	}
+	
+}

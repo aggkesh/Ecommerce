@@ -1,0 +1,60 @@
+package com.ecommerce.orderservice.service.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.ecommerce.orderservice.models.Order;
+import com.ecommerce.orderservice.models.OrderDto;
+import com.ecommerce.orderservice.repository.OrderRepository;
+import com.ecommerce.orderservice.service.OrderDetailService;
+
+@Service
+public class OrderDetailServiceImpl implements OrderDetailService {
+
+	@Autowired
+	private OrderRepository orderRepository;
+	
+	@Override
+	public List<OrderDto> getOrders() {
+		List<OrderDto> orders = new ArrayList<>();
+		orderRepository.findAll().forEach(order -> orders.add(from(order)));
+		return orders;
+	}
+
+	@Override
+	public List<OrderDto> getOrderForUserId(String userId) {
+		List<OrderDto> orders = new ArrayList<>();
+		 
+		orderRepository.findAll().stream().
+		 filter(o -> userId.equals(o.getUserId())).
+		 collect(Collectors.toList()).
+		 forEach(order -> orders.add(from(order)));		
+		
+		 return orders;
+	}
+	
+    public void addOrder(Order order) {
+    	orderRepository.save(order);
+    }
+
+    public void updateOrder(String id, OrderDto orderDto) {
+    	orderRepository.save(orderDto);
+    }
+
+    public void deleteOrder(String orderId) {
+    	orderRepository.deleteById(orderId);
+    }
+    
+    private OrderDto from(Order order) {
+    	return new OrderDto(order.getOrderId(), order.getOrderAmount(), 
+    			order.getOrderDate());
+    }
+
+    private Order from(OrderDto orderDto) {
+    	return new Order(orderId, orderDto.ge);
+    }
+}

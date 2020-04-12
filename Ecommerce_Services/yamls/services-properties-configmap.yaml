@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: services-properties-config-maps
+  namespace: com-ecommerce-production  
+  labels: 
+    app: services-properties
+    version: "1.0"
+    envitroment: production    
+data:
+  QUOTES_USER_URL: "http://user-service"
+  QUOTES_ORDER_URL: "http://order-service"
+  JAEGER_UDP_SENDER_HOST: jaeger-agent 
+  SPRING_ACTIVE_PROFILE: "production"
+  SPRING_DATASOURCE_URL: "jdbc:mysql://mysql-service.com-ecommerce-production/ecommerce?allowPublicKeyRetrieval=true&useSSL=false"

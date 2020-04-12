@@ -1,0 +1,59 @@
+package com.ecommerce.orderservice.service.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.ecommerce.orderservice.models.Order;
+import com.ecommerce.orderservice.service.OrderDetailService;
+
+@Service
+public class OrderDetailServiceImpl implements OrderDetailService {
+
+	@Override
+	public List<Order> getOrders() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Order getOrderForUserId(String userId) throws RuntimeException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	private List<Order> generateOrders() {
+		List<Order> orders = new ArrayList<>();
+		orders.add(new Order("1","250","14-Apr-2020","1"));
+		orders.add(new Order("2","910","14-Apr-2020","2"));
+		orders.add(new Order("3","2150","14-Apr-2020","3"));
+		orders.add(new Order("4","50","14-Apr-2020","4"));
+		orders.add(new Order("5","5550","14-Apr-2020","5"));
+		orders.add(new Order("6","250","14-Apr-2020","6"));
+		orders.add(new Order("7","7110","14-Apr-2020","7"));
+		orders.add(new Order("8","1150","14-Apr-2020","8"));
+		orders.add(new Order("9","6250","14-Apr-2020","9"));
+		orders.add(new Order("10","2501","9-APR-2014","8"));
+		orders.add(new Order("11","1910","5-AUG-2019","10"));
+		orders.add(new Order("12","8501","14-DEC-2020","9"));
+		orders.add(new Order("13","1112","15-OCT-2000","8"));
+		orders.add(new Order("14","1990","19-FEB-2015","7"));
+		orders.add(new Order("15","996","19-MAR-2017","10"));
+		orders.add(new Order("16","889","21-MAY-2011","5"));
+		orders.add(new Order("17","550","16-APR-2019","4"));
+		orders.add(new Order("18","1750","25-JUN-2017","3"));
+		orders.add(new Order("19","1930","12-NOV-2010","2"));
+		orders.add(new Order("20","2299","1-AUG-2015","1"));
+		orders.add(new Order("21","2599","4-DEC-1996","2"));
+		orders.add(new Order("22","1693","20-MAY-2009","2"));
+		orders.add(new Order("23","1209","9-MAY-2007","3"));
+		orders.add(new Order("24","9191","5-JAN-2005","2"));
+		orders.add(new Order("25","9950","25-OCT-2002","10"));
+		orders.add(new Order("26","2509","6-OCT-2004","6"));
+		orders.add(new Order("27","8250","4-FEB-2010","1"));
+		orders.add(new Order("28","5250","1-JUL-2020","7"));
+		return orders;
+	}
+
+}

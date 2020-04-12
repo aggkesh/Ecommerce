@@ -1,0 +1,37 @@
+package com.ecommerce.userservice.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.ecommerce.userservice.models.User;
+import com.ecommerce.userservice.service.impl.UserDetailServiceImpl;
+
+public class UserDetailService implements UserDetailServiceImpl {
+
+	@Override
+	public List<User> getUsers() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public User getUserById(String userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private List<User> generateUsers() {
+		List<User> users = new ArrayList<>();
+		users.add(new User("1","John","23","john.doe@nagarro.com"));
+		users.add(new User("2","Mark","33","mark.mayar@yahoo.com"));
+		users.add(new User("3","Rahul","19","rahul.kappor@hotmail.com"));
+		users.add(new User("4","Ravi","31","ravi.dalmia@gmail.com"));
+		users.add(new User("5","Dheeraj","40","dheeraj.bisth@google.com"));
+		users.add(new User("6","Todd","50","todd.anderson@nagarro.com"));
+		users.add(new User("7","Tomer","70","tomer.shemesh@hotmail.com"));
+		users.add(new User("8","Hemender","12","hemender.jain@yahoo.com"));
+		users.add(new User("9","Amit","29","amit.kumar@google.com"));
+		users.add(new User("10","GagganDeep","25","gaggandeep.nagpal@gmail.com"));
+		return users;
+	}
+}

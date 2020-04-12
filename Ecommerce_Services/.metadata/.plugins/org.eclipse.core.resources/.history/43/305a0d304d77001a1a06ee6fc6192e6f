@@ -1,0 +1,6 @@
+package com.ecommerce.aggregatorservice.service;
+
+public interface OrderDetailService {
+
+	public OrderDetail getOrderDetail(String userId);
+}

@@ -1,0 +1,18 @@
+package com.ecommerce.aggregatorservice;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@ResponseStatus(HttpStatus.NOT_FOUND)
+public class OrderDetailNotFoundException extends RuntimeException {
+
+	/**
+	 * Default Serial Version UID User Not Found Exception
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public OrderDetailNotFoundException(String error_message) {
+		super(message);
+	}
+	
+}

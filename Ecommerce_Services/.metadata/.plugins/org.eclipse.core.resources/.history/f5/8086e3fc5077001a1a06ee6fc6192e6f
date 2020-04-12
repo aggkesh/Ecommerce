@@ -1,0 +1,16 @@
+package com.ecommerce.aggregatorservice.controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RequestMapping(value = "/orderdetails")
+@RestController
+public class OrderDetailController {
+	
+	@Resource
+	AggregatorDetailService aggregatorDetailService;
+
+	@GetMapping("{userId}")
+	public OrderDetail getAllOrderForUser(@PathVariable Integer userId) {
+		return aggregatorDetailService.getUserOrderDetails(userId);
+	}
+}

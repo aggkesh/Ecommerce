@@ -1,0 +1,69 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: order-service
+  namespace: com-ecommerce-production
+  labels:
+    app: order
+    version: "1.0"
+    envitroment: production
+spec:
+  selector:
+    app: order
+    version: "1.0"
+    envitroment: production
+  ports:
+  - port: 80
+    targetPort: 8081
+    protocol: TCP
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order
+  namespace: com-ecommerce-production  
+  labels:
+    app: order
+    version: "1.0"
+    envitroment: production
+spec:
+  replicas: 3
+  selector: 
+    matchLabels:
+      app: order
+      version: "1.0"
+      envitroment: production      
+  template:
+    metadata:
+      labels:
+        app: order
+        version: "1.0"
+        envitroment: production
+    spec:
+      containers:
+      - name: order-container
+        image: kkaggarwal/order-service:0.0.9
+        ports:
+        - containerPort: 8081
+        env:
+        - name: spring.profiles.active
+          valueFrom:
+            configMapKeyRef:
+              name: services-properties-config-maps
+              key: SPRING_ACTIVE_PROFILE
+        - name: opentracing.jaeger.udp-sender.host
+          valueFrom:
+            configMapKeyRef:
+              name: services-properties-config-maps
+              key: JAEGER_UDP_SENDER_HOST
+        - name: spring.datasource.url
+          valueFrom:
+            configMapKeyRef:
+              name: services-properties-config-maps
+              key: SPRING_DATASOURCE_URL
+        - name: spring.datasource.password
+          valueFrom:
+            secretKeyRef:
+              name: secret
+              key: password

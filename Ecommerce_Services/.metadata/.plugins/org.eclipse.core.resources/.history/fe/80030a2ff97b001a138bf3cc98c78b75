@@ -1,0 +1,36 @@
+package com.ecommerce.orderservice.service;
+
+import java.util.List;
+
+import com.ecommerce.orderservice.models.Order;
+import com.ecommerce.orderservice.models.OrderDto;
+
+/**
+ * Order Detail Service to perform queries on Order DB
+ * 
+ * @author keshavaggarwal
+ *
+ */
+public interface OrderDetailService {
+
+	/**
+	 * Get all orders present
+	 * 
+	 * @return list of orders
+	 */
+	public List<OrderDto> getOrders();
+	
+	/**
+	 * Get all orders for the the user with given userId
+	 * 
+	 * @param userId userId of User for which order need to be fetched
+	 * @return list of order for user with given userId
+	 */
+	public List<OrderDto> getOrderForUserId(String userId);
+	
+    public void addOrder(Order order);
+
+    public void updateOrder(String orderId, OrderDto orderDto);
+
+    public void deleteOrder(String orderId);
+}

@@ -1,0 +1,13 @@
+package com.ecommerce.userservice.service.impl;
+
+import java.util.List;
+
+import com.ecommerce.userservice.models.User;
+
+public interface UserDetailServiceImpl {
+	
+	public List<User> getUsers();
+	
+	public User getUserById(String userId);
+	
+}

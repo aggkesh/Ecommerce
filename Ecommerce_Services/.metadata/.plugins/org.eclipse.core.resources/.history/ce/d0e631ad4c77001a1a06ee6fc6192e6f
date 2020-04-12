@@ -1,0 +1,5 @@
+package com.ecommerce.aggregatorservice.models;
+
+public class OrderDetails {
+
+}

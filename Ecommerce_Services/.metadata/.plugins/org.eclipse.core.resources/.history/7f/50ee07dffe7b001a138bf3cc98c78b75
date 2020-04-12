@@ -1,0 +1,14 @@
+package com.ecommerce.aggregatorservice.service;
+
+import com.ecommerce.aggregatorservice.models.OrderDetail;
+
+/**
+ * Order Detail Service
+ * 
+ * @author keshavaggarwal
+ *
+ */
+public interface OrderDetailService {
+
+	public OrderDetail getOrderDetailForUser(String userId) throws RuntimeException;
+}

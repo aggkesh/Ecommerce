@@ -1,0 +1,18 @@
+package com.ecommerce.userservice.service;
+
+import java.util.List;
+
+import com.ecommerce.userservice.models.User;
+
+public interface UserDetailService {
+
+	public List<User> getUsers();
+	
+	public User getUserById(String userId) throws RuntimeException;
+
+    public void addUser(User whiskey);
+
+    public void updateUser(String id, User whiskey);
+
+    public void deleteUser(String id);
+}

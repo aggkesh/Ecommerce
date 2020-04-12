@@ -1,0 +1,10 @@
+package com.ecommerce.userservice.exception;
+
+ResponseStatus(HttpStatus.NOT_FOUND)
+public class UserNotFoundException extends RuntimeException {
+
+	public UserNotFoundException(Integer userId) {
+		super("User with given user id " + userId + "not found");
+	}
+	
+}

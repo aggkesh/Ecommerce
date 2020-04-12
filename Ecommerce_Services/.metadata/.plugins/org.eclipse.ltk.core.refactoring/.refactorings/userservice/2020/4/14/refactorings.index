@@ -1,0 +1,9 @@
+1586086869186	Delete element
+1586088264720	Rename type 'UserService'
+1586088483856	Encapsulate field 'name'
+1586088489792	Encapsulate field 'id'
+1586088495772	Encapsulate field 'email'
+1586088877614	Encapsulate field 'age'
+1586089793372	Rename type 'UserException'
+1586092922844	Rename type 'UserNotFoundException'
+1586092962543	Rename type 'UserNotFoundForGivenUserException'
