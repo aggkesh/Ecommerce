@@ -27,7 +27,7 @@ Steps to Deploy application on Google Kubenetes Engine :-
 
 	- Upload all yaml files on Google Cloud Shell with shell script "ecommerce-application.sh".
 
-	- Now using Shell script "ecommerce-application.sh" to deploy application using command :-
+	- Now use Shell script "ecommerce-application.sh" to deploy application on Kubernetes using command :-
 	  
 		1. Give permission to shell script file.
 		  
